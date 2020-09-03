@@ -9,17 +9,17 @@ public class AnalyseLatencyMain {
 	private final static String usage = "java AnalyseLatencyMain <file name> [-hd]";
 	private static boolean debugMode = false;
 	private static String inputFileDir = null;
-	
 
 	public static void main(String[] args) {
 		int r = parseCommandLine(args);
 		if (r == 0) {
 			File latencyInput = new File(inputFileDir);
 			if (latencyInput.exists()) {
+				System.out.println("Input file is " + latencyInput.getAbsolutePath());
 				AnalyseLatency al = new AnalyseLatency();
 				al.analyse(latencyInput);
 			} else {
-				System.out.println("File does not exist");
+				System.out.println("File " + latencyInput.getAbsolutePath() + " does not exist");
 			}
 		}
 	}
@@ -61,10 +61,14 @@ public class AnalyseLatencyMain {
 		}
 		return r;
 	}
+
 	// check that the file is valid either a file or a directory
-	private static boolean isValidArg(String [] argv, int i) {
+	private static boolean isValidArg(String[] argv, int i) {
 		File latencyInput = new File(inputFileDir);
-		return true;
+		if (latencyInput.exists())
+			return true;
+		else
+			return false;
 	}
 
 }

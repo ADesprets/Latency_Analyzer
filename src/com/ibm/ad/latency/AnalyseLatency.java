@@ -23,9 +23,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 // handle size of input and generate multiple files
 // handle file listener mode
+// add cvs mode
 
 public class AnalyseLatency {
-	private final String pattern = "(\\w{3}\\s\\w{3}\\s\\d{2}\\s\\d{4}\\s)(\\d{2}:\\d{2}:\\d{2}\\s)(\\[.*\\]\\[.*\\]\\[.*\\]\\s)(mpgw|xmlfirewall|wsgw)(.*)(:\\stid.*)Latency:\\s+((?:\\d+\\s+){16})(.*)";
+	private final String pattern = "(\\w{3}\\s\\w{3}\\s\\d{2}\\s\\d{4}\\s)(\\d{2}:\\d{2}:\\d{2}\\s)(\\[.*\\]\\[.*\\]\\[.*\\]\\s)(mpgw|xmlfirewall|wsgw|web-application-firewall)(.*)(:\\stid.*)Latency:\\s+((?:\\d+\\s+){16})(.*)";
 
 	public AnalyseLatency() {
 
@@ -55,11 +56,11 @@ public class AnalyseLatency {
 		XSSFCellStyle boldStylex = null;
 		boldStylex = workbook.createCellStyle();
 		boldStylex.setFont(boldFontx);
-		
+
 		// Vertical style
 		XSSFCellStyle verticalstyle = (XSSFCellStyle) workbook.createCellStyle();
 		verticalstyle.setFont(boldFontx);
-		verticalstyle.setRotation((short)180);
+		verticalstyle.setRotation((short) 180);
 		verticalstyle.setVerticalAlignment(CellStyle.VERTICAL_TOP);
 
 		// Create Workbook
@@ -112,10 +113,12 @@ public class AnalyseLatency {
 			System.out.println("Creating the file " + fileName);
 			FileOutputStream fos = new FileOutputStream(new File(fileName));
 			workbook.write(fos);
+			br.close();
 			fos.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Error when creating " + e.getMessage());
+			// e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -189,7 +192,7 @@ public class AnalyseLatency {
 		// return null;
 	}
 
-	private void createFirstRow(XSSFSheet sheet, XSSFCellStyle boldStyle ,XSSFCellStyle verticalStyle) {
+	private void createFirstRow(XSSFSheet sheet, XSSFCellStyle boldStyle, XSSFCellStyle verticalStyle) {
 		XSSFRow titleRow = sheet.createRow(0);
 		String[] titleValues = { "#", "Date", "Time", "request header read", "front transform begun",
 				"front parsing complete", "front style-sheet ready", "front transform complete",
@@ -210,11 +213,13 @@ public class AnalyseLatency {
 
 	/**
 	 * Add some formulas
+	 * 
 	 * @param sheet
 	 * @param boldStylex
 	 */
-	private  void addFormulas(XSSFSheet sheet, XSSFCellStyle boldStylex) {
-		String[][] calculatedValues= {{"Calculations",""},{"Average","Average(M:M)"}, {"Max","Max(M:M)"}, {"Min","Min(M:M)"},{ "Count","Count(M:M)"}};
+	private void addFormulas(XSSFSheet sheet, XSSFCellStyle boldStylex) {
+		String[][] calculatedValues = { { "Calculations", "" }, { "Average", "Average(M:M)" }, { "Max", "Max(M:M)" },
+				{ "Min", "Min(M:M)" }, { "Count", "Count(M:M)" } };
 		for (int i = 0; i < calculatedValues.length; i++) {
 			XSSFCell cellT = sheet.getRow(i).createCell(23);
 			XSSFCell cellV = sheet.getRow(i).createCell(24);
