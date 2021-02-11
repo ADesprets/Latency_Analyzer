@@ -26,7 +26,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 // add cvs mode
 
 public class AnalyseLatency {
-	private final String pattern = "(\\w{3}\\s\\w{3}\\s\\d{2}\\s\\d{4}\\s)(\\d{2}:\\d{2}:\\d{2}\\s)(\\[.*\\]\\[.*\\]\\[.*\\]\\s)(mpgw|xmlfirewall|wsgw|web-application-firewall)(.*)(:\\stid.*)Latency:\\s+((?:\\d+\\s+){16})(.*)";
+	// private final String pattern = "(\\w{3}\\s\\w{3}\\s\\d{2}\\s\\d{4}\\s)(\\d{2}:\\d{2}:\\d{2}\\s)(\\[.*\\]\\[.*\\]\\[.*\\]\\s)(mpgw|xmlfirewall|wsgw|web-application-firewall)(.*)(:\\stid.*)Latency:\\s+((?:\\d+\\s+){16})(.*)";
+	private final String pattern ="(\\d{8}T\\d{6}.\\d{3}Z\\s)(\\[.*\\]\\[.*\\]\\[.*\\]\\s)(mpgw|wsgw|xmlfirewall|wsproxy)(.*)(:\\stid.*)Latency:\\s+((?:\\d+\\s+){16})(.*)";
 
 	public AnalyseLatency() {
 
@@ -129,19 +130,41 @@ public class AnalyseLatency {
 	}
 
 	/**
-	 * group[1]: Wed Jan 11 2017 group[2]: 15:30:54 group[3]:
-	 * [0x80e00073][latency][info] group[4]: mpgw group[5]:
-	 * (ACC_MpgPostProcessValidationAT) group[6]: : tid(18919888)
-	 * gtid(19509362): group[7]: 0 26 0 6 6 0 0 26 51 26 51 51 0 26 6 26
+	 * group[1]: Wed Jan 11 2017
+	 * group[2]: 15:30:54 
+	 * group[3]: [0x80e00073][latency][info] 
+	 * group[4]: mpgw 
+	 * group[5]: (ACC_MpgPostProcessValidationAT) 
+	 * group[6]: : tid(18919888) gtid(19509362): 
+	 * group[7]: 0 26 0 6 6 0 0 26 51 26 51 51 0 26 6 26
 	 * group[8]: [http://127.0.0.1:8080/tmc/synchro/articles/v7]
 	 */
+	
+	/**
+	 * group[1]: 20210211T131129.661Z 
+	 * group[2]: [0x80e00073][latency][info] 
+	 * group[3]: wsgw
+	 * group[4]: (BranchesBMX)
+	 * group[5]: : tid(18385)[192.168.246.1] gtid(ab5f79ff60252cfe000047d1): 
+	 * group[6]: 0 329   0 295 403 295   0 3174 3241 3174 3241 3241 3240 3174 295 329 
+	 * group[7]: [http://192.168.246.150:9080/branches/Branches]
+	 */
 	private void parseLatencyLine(Matcher m, XSSFRow aRow, int nb) {
+		// need to extract date and time from zulu definition
+		
+//		String dateL = m.group(1);
+//		String timeL = m.group(2);
+//		String serviceType = m.group(4);
+//		String serviceName = m.group(5);
+//		String latencies = m.group(7);
+//		String url = m.group(8);
+
 		String dateL = m.group(1);
-		String timeL = m.group(2);
-		String serviceType = m.group(4);
-		String serviceName = m.group(5);
-		String latencies = m.group(7);
-		String url = m.group(8);
+		String timeL = "";
+		String serviceType = m.group(3);
+		String serviceName = m.group(4);
+		String latencies = m.group(6);
+		String url = m.group(7);
 
 		String[] latencyTime = latencies.trim().split("\\s+");
 		// The latency times are listed in the wrong order. The correct order is

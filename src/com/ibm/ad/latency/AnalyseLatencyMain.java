@@ -4,6 +4,8 @@ import java.io.File;
 
 // handle size of input and generate multiple files
 // Check if creating a csv would not be faster (stream input/ stream output)
+// article from Paul Gletzen: http://pglezen.github.io/dpShowLatency/ShowLatency.html
+// https://www.ibm.com/support/pages/latency-messages-datapower-appliance
 
 public class AnalyseLatencyMain {
 	private final static String usage = "java AnalyseLatencyMain <file name> [-hd]";
