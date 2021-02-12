@@ -2,6 +2,9 @@ Simple Java application to parse DataPower log and generates an Excel spreadshee
 Latency information is parsed, then re-ordered. The excel spreadsheet allows you to rework and filter the data.
 If too many records then only a csv is generated.
 
+![Sample result](./images/SampleResult.png)
+
+
 For background information, please look at the following articles:
 * [Official documentation on DataPower V10](https://www.ibm.com/support/knowledgecenter/SS9H2Y_10.0/com.ibm.dp.doc/latency_messages.html)
 * [An explanation on latency messages in DataPower appliance ](https://www.ibm.com/support/pages/latency-messages-datapower-appliance)
