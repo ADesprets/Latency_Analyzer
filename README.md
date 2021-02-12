@@ -14,10 +14,10 @@ The class diagramm below show the classes with main information
 
 | Class              | Role                                                                                                                                                                                                                                   |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AnalyseLatencyMain | The main class. It validates the arguments. It instantiates the   AnalyseLatency class.                                                                                                                                                |
-| AnalyseLatency     | The class that does the job. It creates the Excel spreadsheet. Parses,   based on a big regex, each line of the log. And add the right value in each   column.                                                                         |
+| AnalyseLatencyMain | The main class. It validates the arguments. It instantiates the AnalyseLatency class.                                                                                                                                                  |
+| AnalyseLatency     | The class that does the job. It creates the Excel spreadsheet. Parses, based on a big regex, each line of the log. And add the right values in each column.                                                                            |
 | StyleManager       | Not used                                                                                                                                                                                                                               |
-| TestRegex          | The one important part of this program beside the handling of Excel is   the parsing of the log. I use a big regex to do so. This class is used to   validate that the regex still works. It is independant of the two main   classes. |
+| TestRegex          | The one important part of this program beside the handling of Excel is the parsing of the log. I use a big regex to do so. This class is used to validate that the regex still works. It is independant of the two main classes.       |
 
 
 The only difficulty with this programm are the librairies used to manipulate Excel spreadsheet. The easiest way is to copy the one I'm using in your env.
