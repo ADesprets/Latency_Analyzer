@@ -9,7 +9,8 @@ For background information, please look at the following articles:
 
 The Java application is very simple. It is made of 4 classes. 2 are not important.
 The class diagramm below show the classes with main information
-[Class diagramm](./images/class-diag.png)
+
+![Class diagramm](./images/class-diag.png)
 
 | Class              | Role                                                                                                                                                                                                                                   |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
