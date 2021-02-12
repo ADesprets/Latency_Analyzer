@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
@@ -53,7 +54,7 @@ public class AnalyseLatency {
 		XSSFFont boldFontx = null;
 		boldFontx = workbook.createFont();
 		boldFontx.setFontHeightInPoints((short) 10);
-		boldFontx.setBoldweight(XSSFFont.BOLDWEIGHT_BOLD);
+		boldFontx.setBold(true);
 		XSSFCellStyle boldStylex = null;
 		boldStylex = workbook.createCellStyle();
 		boldStylex.setFont(boldFontx);
@@ -62,7 +63,7 @@ public class AnalyseLatency {
 		XSSFCellStyle verticalstyle = (XSSFCellStyle) workbook.createCellStyle();
 		verticalstyle.setFont(boldFontx);
 		verticalstyle.setRotation((short) 180);
-		verticalstyle.setVerticalAlignment(CellStyle.VERTICAL_TOP);
+		verticalstyle.setVerticalAlignment(VerticalAlignment.TOP);
 
 		// Create Workbook
 		XSSFSheet sheet = workbook.createSheet("Latencies");

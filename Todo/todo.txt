@@ -1,4 +1,3 @@
 Specify JDK version
 Developped on Windows
-Mvn
 Installation part
