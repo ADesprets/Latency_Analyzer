@@ -23,7 +23,7 @@ The class diagramm below show the classes with main information
 | TestRegex          | The one important part of this program beside the handling of Excel is the parsing of the log. I use a big regex to do so. This class is used to validate that the regex still works. It is independant of the two main classes.       |
 
 
-The only difficulty with this program are the librairies used to manipulate Excel spreadsheet. The easiest way is to copy the one I'm using in your env.
+The only difficulty with this program are the librairies used to manipulate Excel spreadsheet. The easiest way is to copy the ones I'm using in your env.
 
 For information, the latency information are very good to identify if a performance problem happens in front of DataPower, or inside DataPower or on the back end (most of time, this is the last one where most the problems occur...).
 If you find out that the problem is indeed inside DataPower in the processing itself, there is another log called extended latency that will provide even more insight on what is going on inside DataPower. I have not written a parser for it, but a similar way can be used to handle it.
