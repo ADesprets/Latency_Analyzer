@@ -25,7 +25,7 @@ The class diagramm below show the classes with main information
 
 The only difficulty with this programm are the librairies used to manipulate Excel spreadsheet. The easiest way is to copy the one I'm using in your env.
 
-For information, the latency information are very good to identify if the performance problem happens in front of dataPower, or inside DataPower or on the back end (most of time this is the last one where most the problem occur...).
-If you find out that the problem is indeed inside DataPower in the processing itself, there is another log called extended latency that will provide even more insight on what is going on inside DataPower. I do not have not written a parser for it, but a similar way can be used to handle it.
+For information, the latency information are very good to identify if a performance problem happens in front of DataPower, or inside DataPower or on the back end (most of time, this is the last one where most the problems occur...).
+If you find out that the problem is indeed inside DataPower in the processing itself, there is another log called extended latency that will provide even more insight on what is going on inside DataPower. I have not written a parser for it, but a similar way can be used to handle it.
 
 Final word: This tool is used for adhoc troubleshooting. It is not industrial. Another to handle this is to use the Latency log and send them to elastic stack with kafka for example and then use Kibana to filter the data as wishes.
