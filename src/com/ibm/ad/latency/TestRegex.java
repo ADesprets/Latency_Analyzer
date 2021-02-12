@@ -1,5 +1,7 @@
 package com.ibm.ad.latency;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,8 +13,8 @@ public class TestRegex {
 // ([.*][.*][.*]\\s) (.*)(\\(.*\\))
 		String pattern1 = "(\\w{3}\\s\\w{3}\\s\\d{2}\\s\\d{4}\\s)(\\d{2}:\\d{2}:\\d{2}\\s)(\\[.*\\]\\[.*\\]\\[.*\\]\\s)(mpgw|wsgw|xmlfirewall|wsproxy)(.*)(:\\stid.*)Latency:\\s+((?:\\d+\\s+){16})(.*)";
 		String pattern2 = "(\\d{8}T\\d{6}.\\d{3}Z\\s)(\\[.*\\]\\[.*\\]\\[.*\\]\\s)(mpgw|wsgw|xmlfirewall|wsproxy)(.*)(:\\stid.*)Latency:\\s+((?:\\d+\\s+){16})(.*)";
-		Pattern p = Pattern.compile(pattern2);
-		Matcher m = p.matcher(l2);
+		Pattern p = Pattern.compile(pattern1);
+		Matcher m = p.matcher(l1);
 		if (m.matches()) {
 			for (int i = 1; i < m.groupCount()+1; i++) {
 				System.out.println("group[" + i + "]: "+ m.group(i));

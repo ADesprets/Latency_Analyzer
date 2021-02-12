@@ -159,8 +159,8 @@ public class AnalyseLatency {
 //		String latencies = m.group(7);
 //		String url = m.group(8);
 
-		String dateL = m.group(1);
-		String timeL = "";
+		String dateL = m.group(1).substring(0,7);
+		String timeL = m.group(1).substring(9);;
 		String serviceType = m.group(3);
 		String serviceName = m.group(4);
 		String latencies = m.group(6);

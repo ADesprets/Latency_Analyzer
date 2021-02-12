@@ -1,0 +1,22 @@
+@startuml
+note "From http://plantuml.com/" as N1
+
+class AnalyseLatencyMain {
+  void main()
+  void parseCommandLine()
+}
+
+class AnalyseLatency  {
+   pattern : String
+   void analyse(File)
+}
+
+AnalyseLatencyMain --> "1" AnalyseLatency : uses
+
+class StyleManager {
+}
+
+class TestRegex {
+  void main()
+}
+@enduml
