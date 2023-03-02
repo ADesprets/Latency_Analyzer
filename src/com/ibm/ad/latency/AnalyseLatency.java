@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -123,6 +122,7 @@ public class AnalyseLatency {
 			workbook.write(fos);
 			br.close();
 			fos.close();
+			workbook.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Error when creating " + e.getMessage());
@@ -131,6 +131,7 @@ public class AnalyseLatency {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
 		long duration = System.currentTimeMillis() - start;
 		System.out.println("Duration for " + nb + " matches: " + duration + " ms.");
@@ -161,7 +162,8 @@ public class AnalyseLatency {
 //		String latencies = m.group(7);
 //		String url = m.group(8);
 
-		String dateL = m.group(1).substring(0, 7);
+		String dateL = m.group(1).substring(0, 8);
+		System.out.println(dateL);
 		String timeL = m.group(1).substring(9);
 		;
 		String serviceType = m.group(3);

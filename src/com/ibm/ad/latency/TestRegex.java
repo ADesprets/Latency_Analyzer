@@ -1,7 +1,5 @@
 package com.ibm.ad.latency;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,8 +14,8 @@ public class TestRegex {
 		Pattern p = Pattern.compile(pattern1);
 		Matcher m = p.matcher(l1);
 		if (m.matches()) {
-			for (int i = 1; i < m.groupCount()+1; i++) {
-				System.out.println("group[" + i + "]: "+ m.group(i));
+			for (int i = 1; i < m.groupCount() + 1; i++) {
+				System.out.println("group[" + i + "]: " + m.group(i));
 			}
 		}
 	}

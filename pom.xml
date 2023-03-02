@@ -7,15 +7,18 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>DataPowerLatencyAnalyser</name>
 	<description>Creates Excel spreadsheet from latency logs issued from DataPower</description>
+	<organization>
+		<name>IBM</name>
+	</organization>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>3.8.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>11</source>
+					<target>11</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -41,7 +44,7 @@
 						<configuration>
 							<mainClass>com.ibm.ad.latency.AnalyseLatencyMain</mainClass>
 							<arguments>
-								<argument>D:\CurrentProjects\PSA\2021\latency.log</argument>
+								<argument>D:\CurrentProjects\Sonepar\DPOD\Latency\latency-DTP2_PRD.txt</argument>
 							</arguments>
 						</configuration>
 					</execution>
@@ -55,9 +58,6 @@
 			<artifactId>poi-ooxml</artifactId>
 		</dependency>
 	</dependencies>
-	<organization>
-		<name>IBM</name>
-	</organization>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
